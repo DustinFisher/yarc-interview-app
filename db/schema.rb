@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023013645) do
+ActiveRecord::Schema.define(version: 20151026003831) do
 
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -30,5 +30,13 @@ ActiveRecord::Schema.define(version: 20151023013645) do
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+
+  create_table "links", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
