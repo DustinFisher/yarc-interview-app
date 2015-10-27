@@ -14,7 +14,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html  { redirect_to(@link,
+        format.html  { redirect_to(root_path,
                       :notice => 'Link was successfully created.') }
       else
         format.html  { render :action => "new" }

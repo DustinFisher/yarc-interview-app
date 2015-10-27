@@ -6,3 +6,10 @@
   <li role="presentation"><a href="#">Top</a></li>
   <li role="presentation"><a href="#">New</a></li>
 </ul>
+
+<ul>
+  <% @links.each do |link| %>
+    <li><%= link_to link.title, "#{link.url}" %></li>
+  <% end %>
+</ul>
+<%= paginate @links %>
