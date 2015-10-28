@@ -1,0 +1,14 @@
+<h2>Comments:<h2>
+<div>
+  <% @link.comment_threads.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
+</div>
+
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :link_id, value: @link.id %>
+  <div class="field form-group">
+    <%= f.text_area :body, class: 'form-control' %>
+    <%= submit_tag "Post comment", class: 'btn btn-primary' %>
+  </div>
+<% end %>

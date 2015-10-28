@@ -1,7 +1,9 @@
 class LinksController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_user!
 
   def show
+    @link    = Link.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -10,11 +12,11 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
-    @link.account_id = current_account.id
+    @link.user_id = current_user.id
 
     respond_to do |format|
       if @link.save
-        format.html  { redirect_to(root_path,
+        format.html  { redirect_to(link_path(@link),
                       :notice => 'Link was successfully created.') }
       else
         format.html  { render :action => "new" }
