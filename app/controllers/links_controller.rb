@@ -2,8 +2,8 @@ class LinksController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @link    = Link.find(params[:id])
-    @comment = Comment.new
+    @link = Link.find(params[:id])
+    @new_comment = Comment.build_from(@link, current_user.id, "")
   end
 
   def new
